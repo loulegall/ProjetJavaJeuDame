@@ -1,5 +1,3 @@
-package Projet.ProjetJavaJeuDame;
-
 public class Joueur {
     private String pseudo;
     private int nbButton;
