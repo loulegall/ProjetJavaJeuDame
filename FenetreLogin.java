@@ -1,27 +1,29 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FenetreLogin extends JFrame {
 
-    private Joueur joueur;
+    private Joueur joueur1;
+    private Joueur joueur2;
+
     private JLabel labelPseudo1;
     private JLabel labelPseudo2;
     private JTextField textPseudo1;
     private JTextField textPseudo2;
     private JButton boutonStart;
 
-    public FenetreLogin (String titre){
+    public FenetreLogin (String titre, Joueur joueur1, Joueur joueur2){
+        this.joueur1 = joueur1;
+        this.joueur2 = joueur2;
         this.setTitle(titre);
         this.setResizable(false);
-
-        //this.setSize(500, 500);
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo((Component)null);
         this.setMinimumSize(new Dimension(300, 300));
         this.setLayout((LayoutManager)null);
-        this.setDefaultCloseOperation(2);
         this.construireFenetre();
     }
 
@@ -35,7 +37,7 @@ public class FenetreLogin extends JFrame {
 
         //________Text pseudo1________//
         this.textPseudo1 = new JTextField(100);
-        //this.textPseudo1.setText(this.joueur.getFirstName());
+        this.textPseudo1.setText(this.joueur1.getPseudo());
         this.textPseudo1.setLocation(90, 30);
         this.textPseudo1.setSize(140, 20);
         this.add(this.textPseudo1);
@@ -48,7 +50,7 @@ public class FenetreLogin extends JFrame {
 
         //________Text pseudo2________//
         this.textPseudo2 = new JTextField(100);
-        //this.textPseudo2.setText(this.emp.getFirstName());
+        this.textPseudo2.setText(this.joueur2.getPseudo());
         this.textPseudo2.setLocation(90, 60);
         this.textPseudo2.setSize(140, 20);
         this.add(this.textPseudo2);
@@ -62,16 +64,14 @@ public class FenetreLogin extends JFrame {
 
         this.pack();
     }
-/*
+
     public class MonEcouteur implements ActionListener {
-        FenetreModification fenetre;
+        public MonEcouteur(){
 
-        public MonEcouteur(FenetreModification fenetre) {
-            this.fenetre = fenetre;
         }
-
         public void actionPerformed(ActionEvent e) {
-            FenetreModification.this.control.saveEmployee(FenetreModification.this.textFirstName.getText(), FenetreModification.this.textName.getText(), FenetreModification.this.textDepartment.getText());
+            if ()
+            //si on appuie sur le bouton start on ouvre la fenetre jeu
         }
-    }*/
+    }
 }
