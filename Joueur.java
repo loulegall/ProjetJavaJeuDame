@@ -9,4 +9,8 @@ public class Joueur {
     public String getPseudo() {
         return this.pseudo;
     }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
 }
