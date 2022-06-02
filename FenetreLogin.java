@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class FenetreLogin extends JFrame {
 
-    private Joueur joueur1;
-    private Joueur joueur2;
+   // private Joueur joueur1;
+    //private Joueur joueur2;
     private JLabel labelPseudo1;
     private JLabel labelPseudo2;
     private JTextField textPseudo1;
@@ -36,7 +36,7 @@ public class FenetreLogin extends JFrame {
 
         //________Text pseudo1________//
         this.textPseudo1 = new JTextField(100);
-        //this.textPseudo1.setText(this.joueur1.getPseudo());
+        this.textPseudo1.setText(" ");
         this.textPseudo1.setLocation(90, 30);
         this.textPseudo1.setSize(140, 20);
         this.add(this.textPseudo1);
@@ -49,7 +49,7 @@ public class FenetreLogin extends JFrame {
 
         //________Text pseudo2________//
         this.textPseudo2 = new JTextField(100);
-        //this.textPseudo2.getText();
+        this.textPseudo2.setText(" ");
         this.textPseudo2.setLocation(90, 60);
         this.textPseudo2.setSize(140, 20);
         this.add(this.textPseudo2);
@@ -71,14 +71,14 @@ public class FenetreLogin extends JFrame {
         }
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==boutonStart){
+
                 String pseudoj1 = textPseudo2.getText();
-                joueur1.setPseudo(pseudoj1);
+                Joueur joueur1 = new Joueur(pseudoj1);
 
                 String pseudoj2 = textPseudo2.getText();
-                joueur2.setPseudo(pseudoj2);
+                Joueur joueur2 = new Joueur(pseudoj2);
 
                 FenetreJeu f = new FenetreJeu(joueur1, joueur2);
-
                 f.setVisible(true);
             }
         }
