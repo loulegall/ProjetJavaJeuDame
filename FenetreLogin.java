@@ -4,18 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FenetreLogin extends JFrame {
-
-   // private Joueur joueur1;
-    //private Joueur joueur2;
     private JLabel labelPseudo1;
     private JLabel labelPseudo2;
     private JTextField textPseudo1;
     private JTextField textPseudo2;
     private JButton boutonStart;
 
-    public FenetreLogin (String titre /*,Joueur joueur1, Joueur joueur2*/){
-        //this.joueur1 = joueur1;
-        //this.joueur2 = joueur2;
+    public FenetreLogin (String titre ){
         this.setTitle(titre);
         this.setResizable(false);
         this.setLayout(null);
@@ -24,6 +19,14 @@ public class FenetreLogin extends JFrame {
         this.setMinimumSize(new Dimension(300, 300));
         this.setLayout((LayoutManager)null);
         this.construireFenetre();
+    }
+
+    public void setTextPseudo1(JTextField textPseudo1) {
+        this.textPseudo1 = textPseudo1;
+    }
+
+    public void setTextPseudo2(JTextField textPseudo2) {
+        this.textPseudo2 = textPseudo2;
     }
 
     public void construireFenetre() {
