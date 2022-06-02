@@ -23,7 +23,7 @@ public class FenetreJeu extends JFrame {
 
     public void construireFenetre(Joueur J1, Joueur J2) {
 
-        panelJoueur = construirePanelJoueur();
+        panelJoueur = construirePanelJoueur(J1,J2);
         panelTitre = construirePanelTitre();
         panelPlato = construirePanelPlato();
         panelBoutton = construirePanelBoutton();
@@ -52,7 +52,7 @@ public class FenetreJeu extends JFrame {
         this.setContentPane(panelPrincipal);
     }
 
-    public JPanel construirePanelJoueur() {
+    public JPanel construirePanelJoueur(Joueur J1, Joueur J2) {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1,2));
@@ -60,7 +60,7 @@ public class FenetreJeu extends JFrame {
         JPanel panelJ1 = new JPanel();
         panelJ1.setLayout(new GridLayout(2,1));
         pseudo1 = new JLabel();
-        pseudo1.setText("JOUEUR 1");
+        pseudo1.setText(""+J1.getPseudo());
         panelJ1.add(pseudo1);
 
         NbJetonJ1 = 10;
@@ -71,7 +71,7 @@ public class FenetreJeu extends JFrame {
         JPanel panelJ2 = new JPanel();
         panelJ2.setLayout(new GridLayout(2,1));
         pseudo2 = new JLabel();
-        pseudo2.setText("JOUEUR 2");
+        pseudo2.setText(""+J2.getPseudo());
         panelJ2.add(pseudo2);
 
         NbJetonJ2 = 5;
@@ -115,7 +115,6 @@ public class FenetreJeu extends JFrame {
         panel.add(restart);
 
         exit = new JButton("EXIT");
-        exit.setMaximumSize(new Dimension(40,20));
         panel.add(exit);
 
         return panel;
