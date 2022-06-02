@@ -58,29 +58,29 @@ public class FenetreLogin extends JFrame {
         this.boutonStart = new JButton("Start");
         this.boutonStart.setLocation(90, 210);
         this.boutonStart.setSize(140, 50);
-        //this.boutonStart.addActionListener(new MonEcouteur(this));
+        this.boutonStart.addActionListener(new MonEcouteur(this));
         this.add(this.boutonStart);
 
         this.pack();
     }
 
     public class MonEcouteur implements ActionListener {
-        public MonEcouteur(){
-            String pseudoj1 = textPseudo2.getText();
-            joueur1.setPseudo(pseudoj1);
-
-            String pseudoj2 = textPseudo2.getText();
-            joueur2.setPseudo(pseudoj2);
-
-            FenetreJeu f = new FenetreJeu(joueur1, joueur2);
-
-            f.setVisible(true);
+        FenetreLogin unefenetre;
+        public MonEcouteur(FenetreLogin f){
+            this.unefenetre = f;
         }
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==boutonStart){
+                String pseudoj1 = textPseudo2.getText();
+                joueur1.setPseudo(pseudoj1);
 
+                String pseudoj2 = textPseudo2.getText();
+                joueur2.setPseudo(pseudoj2);
+
+                FenetreJeu f = new FenetreJeu(joueur1, joueur2);
+
+                f.setVisible(true);
             }
-            //si on appuie sur le bouton start on ouvre la fenetre jeu
         }
     }
 }
