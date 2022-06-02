@@ -72,7 +72,7 @@ public class FenetreLogin extends JFrame {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==boutonStart){
 
-                String pseudoj1 = textPseudo2.getText();
+                String pseudoj1 = textPseudo1.getText();
                 Joueur joueur1 = new Joueur(pseudoj1);
 
                 String pseudoj2 = textPseudo2.getText();
