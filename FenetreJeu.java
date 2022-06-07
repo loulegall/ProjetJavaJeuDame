@@ -100,7 +100,7 @@ public class FenetreJeu extends JFrame {
 
         JPanel panel = new JPanel();
 
-        LabelImgPlato = new JLabel(new ImageIcon("/home/maxime/Documents/1A/PA3/Dev objet/PARTIE 2/ProjetJavaJeuDame/plato.jpg"));
+        LabelImgPlato = new JLabel(new ImageIcon("plato.jpg"));
         panel.add(LabelImgPlato);
 
         return panel;
