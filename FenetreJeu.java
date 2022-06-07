@@ -1,13 +1,28 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.border.Border;
+import java.awt.BorderLayout;
+
+import static java.awt.Color.blue;
+import static java.awt.Color.red;
 
 public class FenetreJeu extends JFrame {
 
     private JPanel panelPrincipal, panelJoueur, panelTitre;
     private JPanel panelPlato, panelBoutton;
     private int NbJetonJ1, NbJetonJ2;
-    private JLabel t1, LabelImgPlato ,pseudo1, LabelJetonJ1,pseudo2, LabelJetonJ2;
+    private JLabel t1, t2, LabelImgPlato ,pseudo1, LabelJetonJ1,pseudo2, LabelJetonJ2;
     private JButton restart, exit;
+
+    private Pion pionN, pionR;
+
+    private enum Couleur {
+        BLANC,
+        NOIR
+        ;
+    }
 
     public FenetreJeu (Joueur J1, Joueur J2){
         this.setTitle("Jeu de Dame");
@@ -22,7 +37,6 @@ public class FenetreJeu extends JFrame {
     }
 
     public void construireFenetre(Joueur J1, Joueur J2) {
-
         panelJoueur = construirePanelJoueur(J1,J2);
         panelTitre = construirePanelTitre();
         panelPlato = construirePanelPlato();
@@ -63,7 +77,7 @@ public class FenetreJeu extends JFrame {
         pseudo1.setText(""+J1.getPseudo());
         panelJ1.add(pseudo1);
 
-        NbJetonJ1 = 10;
+        NbJetonJ1 = 4;
         LabelJetonJ1 = new JLabel();
         LabelJetonJ1.setText("Jeton : "+NbJetonJ1);
         panelJ1.add(LabelJetonJ1);
@@ -74,7 +88,7 @@ public class FenetreJeu extends JFrame {
         pseudo2.setText(""+J2.getPseudo());
         panelJ2.add(pseudo2);
 
-        NbJetonJ2 = 5;
+        NbJetonJ2 = 3;
         LabelJetonJ2 = new JLabel();
         LabelJetonJ2.setText("Jeton : "+NbJetonJ2);
         panelJ2.add(LabelJetonJ2);
@@ -99,9 +113,18 @@ public class FenetreJeu extends JFrame {
     public JPanel construirePanelPlato() {
 
         JPanel panel = new JPanel();
+        //panel.setLayout(new GridLayout());
+        //panel.setPreferredSize(new Dimension(1000, 1000));
 
-        LabelImgPlato = new JLabel(new ImageIcon("/home/maxime/Documents/1A/PA3/Dev objet/PARTIE 2/ProjetJavaJeuDame/plato.jpg"));
+        LabelImgPlato = new JLabel(new ImageIcon("plato.jpg"));
         panel.add(LabelImgPlato);
+
+        //Damier damier = new Damier();
+        //damier.setBounds(10, 10, 400, 400);
+
+        //panel.add(new Damier());
+        //revalidate();
+        //repaint();
 
         return panel;
     }
@@ -112,12 +135,33 @@ public class FenetreJeu extends JFrame {
         panel.setLayout(new GridLayout(1,2));
 
         restart = new JButton("RESTART");
+        restart.addActionListener(new FenetreJeu.MonEcouteur(this));
         panel.add(restart);
 
         exit = new JButton("EXIT");
+        exit.addActionListener(new FenetreJeu.MonEcouteur(this));
         panel.add(exit);
 
         return panel;
+    }
+
+    public class MonEcouteur implements ActionListener {
+        FenetreJeu unefenetre;
+        public MonEcouteur(FenetreJeu f){
+            this.unefenetre = f;
+        }
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource()==restart){
+                NbJetonJ1 = 10;
+                LabelJetonJ1.setText("Jeton : "+NbJetonJ1);
+                NbJetonJ2 = 10;
+                LabelJetonJ2.setText("Jeton : "+NbJetonJ2);
+
+            }
+            if (e.getSource()==exit){
+                unefenetre.dispose();
+            }
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 public class Pion {
     private int colonne;
     private int ligne;
-    private String equipe;
+    private String couleur;
 
     public Pion() {
 
