@@ -81,8 +81,10 @@ public class FenetreLogin extends JFrame {
                 String pseudoj2 = textPseudo2.getText();
                 Joueur joueur2 = new Joueur(pseudoj2);
 
-                FenetreJeu f = new FenetreJeu(joueur1, joueur2);
-                f.setVisible(true);
+                if(!(pseudoj1.equals(" ")) && !(pseudoj2.equals(" "))) {
+                    FenetreJeu f = new FenetreJeu(joueur1, joueur2);
+                    f.setVisible(true);
+                }
             }
         }
     }
