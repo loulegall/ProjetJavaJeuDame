@@ -31,7 +31,7 @@ public class FenetreJeu extends JFrame {
         this.setLayout(null);
         this.setDefaultCloseOperation(2);
         this.setLocationRelativeTo(null);
-        this.setMinimumSize(new Dimension(600, 600));
+        this.setMinimumSize(new Dimension(700, 700));
         this.setLayout(null);
         this.construireFenetre(J1, J2);
     }
@@ -46,7 +46,6 @@ public class FenetreJeu extends JFrame {
         panelPrincipal.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-
         c.gridy= 0;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0,50,20,0);
@@ -57,7 +56,7 @@ public class FenetreJeu extends JFrame {
         panelPrincipal.add(panelTitre,c);
 
         c.gridy= 2;
-        c.insets = new Insets(0,0,20,0);
+        c.insets = new Insets(0,0,5,0);
         panelPrincipal.add(panelPlato, c);
 
         c.gridy= 3;
@@ -113,19 +112,22 @@ public class FenetreJeu extends JFrame {
     public JPanel construirePanelPlato() {
 
         JPanel panel = new JPanel();
-        //panel.setLayout(new GridLayout());
+        panel.setLayout(new GridLayout(1, 2));
         //panel.setPreferredSize(new Dimension(1000, 1000));
 
         LabelImgPlato = new JLabel(new ImageIcon("plato.jpg"));
-        panel.add(LabelImgPlato);
+        // panel.add(LabelImgPlato);
 
-        //Damier damier = new Damier();
-        //damier.setBounds(10, 10, 400, 400);
+        Damier damier = new Damier();
+        damier.setBounds(10, 10, 400, 400);
 
         //panel.add(new Damier());
         //revalidate();
         //repaint();
 
+        damier.setPreferredSize(new Dimension(500, 500));
+
+        panel.add(damier);
         return panel;
     }
 
