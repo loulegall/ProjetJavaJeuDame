@@ -8,26 +8,12 @@ import java.awt.geom.Rectangle2D;
 public class Damier extends JPanel implements MouseListener{
 
     ImageIcon img;
-    String[][] pions = {
-            {null,"1",null,"1",null,"1",null,"1",null,"1"},
-            {"1",null,"1",null,"1",null,"1",null,"1",null},
-            {null,"1",null,"1",null,"1",null,"1",null,"1"},
-            {"1",null,"1",null,"1",null,"1",null,"1",null},
-            {null, null, null, null, null, null ,null, null,null, null,},
-            {null, null, null, null, null, null ,null, null,null, null,},
-            {null,"0",null,"0",null,"0",null,"0",null,"0"},
-            {"0",null,"0",null,"0",null,"0",null,"0",null},
-            {null,"0",null,"0",null,"0",null,"0",null,"0"},
-            {"0",null,"0",null,"0",null,"0",null,"0",null},
-
-    };
 
     Damier(){
        //img = new ImageIcon("/home/maxime/Documents/1A/PA3/Dev objet/PARTIE 2/ProjetJavaJeuDame/pion.png");
     }
 
     protected void paintComponent(Graphics g){
-        //super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
 
@@ -71,10 +57,11 @@ public class Damier extends JPanel implements MouseListener{
             g2.drawString(""+(char)c, (j+ 1.5f) * DIM-5, 2.0f / 3*DIM+6);
         }
 
+        Pion p = new Pion();
         for(int i=0; i<NBligne; i++){
             for(int j=0; j<NBcolone; j++){
-                if(pions[i][j]!=null){
-                    if(pions[i][j]=="1"){
+                if(p.getPions(i,j)!=null){
+                    if(p.getPions(i,j)=="1"){
                         g2.setColor(Color.BLACK);
                         g2.fillOval(5+(j+1)*DIM,5+(i+1)*DIM,30,30);
                         //pion p = new pion(j, i, "1");

@@ -5,9 +5,28 @@ public class Pion {
     private Integer ligne;
     private String couleurPion;
 
-    public Pion(String couleur) {
-        this.couleurPion = couleur;
+    private String[][] pions = {
+            {null,"1",null,"1",null,"1",null,"1",null,"1"},
+            {"1",null,"1",null,"1",null,"1",null,"1",null},
+            {null,"1",null,"1",null,"1",null,"1",null,"1"},
+            {"1",null,"1",null,"1",null,"1",null,"1",null},
+            {null, null, null, null, null, null ,null, null,null, null,},
+            {null, null, null, null, null, null ,null, null,null, null,},
+            {null,"0",null,"0",null,"0",null,"0",null,"0"},
+            {"0",null,"0",null,"0",null,"0",null,"0",null},
+            {null,"0",null,"0",null,"0",null,"0",null,"0"},
+            {"0",null,"0",null,"0",null,"0",null,"0",null},
+    };
+
+    public String getPions(int x, int y) {
+        return pions[x][y];
     }
+
+    public Pion() {
+
+    }
+
+
     private void paintComponent(Graphics g){
         int DIM=50;
 
