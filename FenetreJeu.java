@@ -113,22 +113,9 @@ public class FenetreJeu extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 2));
-        //panel.setPreferredSize(new Dimension(1000, 1000));
-
-        LabelImgPlato = new JLabel(new ImageIcon("plato.jpg"));
-        // panel.add(LabelImgPlato);
 
         Damier damier = new Damier();
         damier.setBounds(10, 10, 400, 400);
-
-<<<<<<< HEAD
-        LabelImgPlato = new JLabel(new ImageIcon("plato.jpg"));
-        panel.add(LabelImgPlato);
-=======
-        //panel.add(new Damier());
-        //revalidate();
-        //repaint();
->>>>>>> 60987df111845739b8a2cf785594fc454e5db367
 
         damier.setPreferredSize(new Dimension(500, 500));
 
