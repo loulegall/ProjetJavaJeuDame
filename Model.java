@@ -6,8 +6,8 @@ public class Model {
     private ArrayList<Pion> listePionBlanc = new ArrayList<>();
 
     public Model(){
-        Pion pionN = new Pion();
-        Pion pionB = new Pion();
+        //Pion pionN = new Pion();
+        //Pion pionB = new Pion();
 
     }
 
