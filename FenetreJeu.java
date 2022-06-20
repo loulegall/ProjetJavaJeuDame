@@ -17,6 +17,7 @@ public class FenetreJeu extends JFrame {
     private JButton restart, exit;
 
     private Pion pionN, pionR;
+    private Damier damier;
 
     private enum Couleur {
         BLANC,
@@ -37,10 +38,11 @@ public class FenetreJeu extends JFrame {
     }
 
     public void construireFenetre(Joueur J1, Joueur J2) {
-        panelJoueur = construirePanelJoueur(J1,J2);
+
         panelTitre = construirePanelTitre();
         panelPlato = construirePanelPlato();
         panelBoutton = construirePanelBoutton();
+        panelJoueur = construirePanelJoueur(J1,J2);
 
         panelPrincipal = new JPanel();
         panelPrincipal.setLayout(new GridBagLayout());
@@ -76,7 +78,7 @@ public class FenetreJeu extends JFrame {
         pseudo1.setText(""+J1.getPseudo());
         panelJ1.add(pseudo1);
 
-        NbJetonJ1 = 4;
+        NbJetonJ1 = 20;
         LabelJetonJ1 = new JLabel();
         LabelJetonJ1.setText("Jeton : "+NbJetonJ1);
         panelJ1.add(LabelJetonJ1);
@@ -87,7 +89,7 @@ public class FenetreJeu extends JFrame {
         pseudo2.setText(""+J2.getPseudo());
         panelJ2.add(pseudo2);
 
-        NbJetonJ2 = 3;
+        NbJetonJ2 = 20;
         LabelJetonJ2 = new JLabel();
         LabelJetonJ2.setText("Jeton : "+NbJetonJ2);
         panelJ2.add(LabelJetonJ2);
@@ -114,7 +116,7 @@ public class FenetreJeu extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 2));
 
-        Damier damier = new Damier();
+        this.damier = new Damier();
         damier.setBounds(10, 10, 400, 400);
 
         damier.setPreferredSize(new Dimension(500, 500));
@@ -146,9 +148,9 @@ public class FenetreJeu extends JFrame {
         }
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()==restart){
-                NbJetonJ1 = 10;
+                NbJetonJ1 = 20;
                 LabelJetonJ1.setText("Jeton : "+NbJetonJ1);
-                NbJetonJ2 = 10;
+                NbJetonJ2 = 20;
                 LabelJetonJ2.setText("Jeton : "+NbJetonJ2);
 
             }
