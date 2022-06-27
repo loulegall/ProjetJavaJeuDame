@@ -2,35 +2,45 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 
 public class Damier extends JPanel implements MouseListener{
 
+<<<<<<< HEAD
     ImageIcon img;
     private JButton boutonCase;
+=======
+    ArrayList<Pion> ListePion = new ArrayList<>();
+    int nbLigne = 10;
+    int nbColonne = 10;
+    boolean isWhite = true;
+
+    boolean checkBouton = false;
+>>>>>>> f3aa06cb067075c5e10fd545cb92b015677ad3af
 
     Damier(){
-       //img = new ImageIcon("/home/maxime/Documents/1A/PA3/Dev objet/PARTIE 2/ProjetJavaJeuDame/pion.png");
+        this.construireDamier();
     }
 
+<<<<<<< HEAD
     protected void paintComponent(Graphics g){
 
         Graphics2D g2 = (Graphics2D) g;
 
         //g.setColor(Color.black);
         g.fillRect(50, 50, 50, 50);
+=======
+    private void construireDamier(){
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(nbLigne, nbColonne));
+>>>>>>> f3aa06cb067075c5e10fd545cb92b015677ad3af
 
-
-        int DIM = 40;
-        int NBligne = 10;
-        int NBcolone = 10;
-        boolean isWhite = true;
-
-        //cases
-        for (int i=0; i<NBligne; i++){
-            for (int j=0; j<NBcolone; j++){
+        for (int i=0; i<nbLigne; i++){
+            for (int j=0; j<nbColonne; j++){
+                Pion Bcase = new Pion();
                 if (isWhite){
+<<<<<<< HEAD
 
                     //________Bouton case________//
                     this.boutonCase = new JButton();
@@ -50,74 +60,103 @@ public class Damier extends JPanel implements MouseListener{
                     this.boutonCase.setBackground(Color.lightGray);
                     this.add(this.boutonCase);
                     //g2.setPaint(Color.lightGray);
+=======
+                    Bcase.setBackground(Color.white);
+                }else{
+                    Bcase.setBackground(Color.gray);
+>>>>>>> f3aa06cb067075c5e10fd545cb92b015677ad3af
                 }
-                g2.fill(new Rectangle2D.Double((j+1)*DIM, (i+1)*DIM, DIM, DIM));
                 isWhite = !isWhite;
+
+                for(int x=0; x!=Bcase.positions.length; x++){
+                    if(Bcase.positions[i][j] == "1"){
+                        Bcase.couleur = "N";
+                        Bcase.ligne = i;
+                        Bcase.colonne = j;
+                        ListePion.add(Bcase);
+
+                    }else if (Bcase.positions[i][j] == "0"){
+                        Bcase.couleur = "B";
+                        Bcase.ligne = i;
+                        Bcase.colonne = j;
+                        ListePion.add(Bcase);
+
+                    }else if (Bcase.positions[i][j] == ""){
+                        Bcase.couleur = "";
+                        Bcase.ligne = i;
+                        Bcase.colonne = j;
+                        ListePion.add(Bcase);
+                    }
+                }
+                Bcase.setText(Bcase.couleur);
+                panel.add(Bcase);
             }
             isWhite = !isWhite;
         }
-
-        //cadre
-        g2.setPaint(Color.BLACK);
-        g2.setStroke(new BasicStroke(2));
-        g2.draw(new Rectangle2D.Double(DIM, DIM, NBcolone*DIM, NBligne*DIM));
-
-        //Légendes
-        int c;
-        for(int i=0; i<NBligne; i++){
-            c = i+'0';
-            g2.drawString(""+(char)c, 2.0f / 3*DIM, (i+1.5f)*DIM+6);
+        for (int i=0; i!=ListePion.size(); i++) {
+            ListePion.get(i).addMouseListener(this);
         }
-        for(int j=0; j<NBcolone; j++){
-            c = 'A' + j ;
-            g2.drawString(""+(char)c, (j+ 1.5f) * DIM-5, 2.0f / 3*DIM+6);
+        this.add(panel);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+        if(checkBouton == true){
+            checkBouton = false;
+            for (int i=0; i!=ListePion.size(); i++) {
+                if(ListePion.get(i).couleur!="B" || ListePion.get(i).couleur!="N"){
+                    ListePion.get(i).setBackground(Color.gray);
+                }
+            }
         }
 
-        Pion p = new Pion();
-        for(int i=0; i<NBligne; i++){
-            for(int j=0; j<NBcolone; j++){
-                if(p.getPions(i,j)!=null){
-                    if(p.getPions(i,j)=="1"){
-                        g2.setColor(Color.BLACK);
-                        g2.fillOval(5+(j+1)*DIM,5+(i+1)*DIM,30,30);
-                        //pion p = new pion(j, i, "1");
-                        //g2.draw(p);
-                    }else{
-                        g2.setColor(Color.white);
-                        g2.fillOval(5+(j+1)*DIM,5+(i+1)*DIM, 30, 30);
-                        //pion p = new pion(j, i, "0");
-                        //g2.draw(p);
+        for (int i=0; i!=ListePion.size(); i++) {
+            if (ListePion.get(i).couleur!=""){
+                if (mouseEvent.getSource() == ListePion.get(i)){
+                    if (ListePion.get(i).couleur=="B"){
+                        if (ListePion.get(i-45).couleur!="B"){
+                            ListePion.get(i-45).setBackground(Color.red);
+                            checkBouton =true;
+                        }
+                        if (ListePion.get(i-40).couleur!="B"){
+                            ListePion.get(i-40).setBackground(Color.red);
+                            checkBouton = true;
+                        }
+                    }
+                    if (ListePion.get(i).couleur=="N"){
+                        if (ListePion.get(i+45).couleur!="N"){
+                            ListePion.get(i+45).setBackground(Color.red);
+                            checkBouton = true;
+                        }
+                        if (ListePion.get(i+40).couleur!="N"){
+                            ListePion.get(i+40).setBackground(Color.red);
+                            checkBouton = true;
+                        }
                     }
                 }
             }
         }
 
-        g2.dispose();
-
 
     }
 
-
-    public void mouseClicked(MouseEvent arg0) {
-
-    }
-
-    public void mouseEntered(MouseEvent arg0) {
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
 
     }
 
-    public void mouseExited(MouseEvent arg0) {
+    @Override
+    public void mouseReleased(MouseEvent mouseEvent) {
 
     }
 
-    public void mousePressed(MouseEvent arg0) {
+    @Override
+    public void mouseEntered(MouseEvent mouseEvent) {
 
     }
 
-    public void mouseReleased(MouseEvent arg0) {
+    @Override
+    public void mouseExited(MouseEvent mouseEvent) {
 
     }
-
-
-
 }
