@@ -8,6 +8,7 @@ import java.awt.geom.Rectangle2D;
 public class Damier extends JPanel implements MouseListener{
 
     ImageIcon img;
+    private JButton boutonCase;
 
     Damier(){
        //img = new ImageIcon("/home/maxime/Documents/1A/PA3/Dev objet/PARTIE 2/ProjetJavaJeuDame/pion.png");
@@ -17,7 +18,7 @@ public class Damier extends JPanel implements MouseListener{
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g.setColor(Color.black);
+        //g.setColor(Color.black);
         g.fillRect(50, 50, 50, 50);
 
 
@@ -30,10 +31,25 @@ public class Damier extends JPanel implements MouseListener{
         for (int i=0; i<NBligne; i++){
             for (int j=0; j<NBcolone; j++){
                 if (isWhite){
-                    g2.setPaint(Color.white);
+
+                    //________Bouton case________//
+                    this.boutonCase = new JButton();
+                    this.boutonCase.setLocation((j+1)*DIM, (i+1)*DIM);
+                    this.boutonCase.setSize(DIM, DIM);
+                    //this.boutonCase.addActionListener(new FenetreLogin.MonEcouteur(this));
+                    this.boutonCase.setBackground(Color.white);
+                    this.add(this.boutonCase);
+                    //g2.setPaint(Color.white);
 
                 }else{
-                    g2.setPaint(Color.lightGray);
+                    //________Bouton case________//
+                    this.boutonCase = new JButton();
+                    this.boutonCase.setLocation((j+1)*DIM, (i+1)*DIM);
+                    this.boutonCase.setSize(DIM, DIM);
+                    //this.boutonCase.addActionListener(new FenetreLogin.MonEcouteur(this));
+                    this.boutonCase.setBackground(Color.lightGray);
+                    this.add(this.boutonCase);
+                    //g2.setPaint(Color.lightGray);
                 }
                 g2.fill(new Rectangle2D.Double((j+1)*DIM, (i+1)*DIM, DIM, DIM));
                 isWhite = !isWhite;
