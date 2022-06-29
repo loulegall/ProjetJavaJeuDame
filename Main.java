@@ -2,14 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FenetreLogin l = new FenetreLogin("Noms des joueurs");
-        //FenetreJeu f = new FenetreJeu("joueur1", "joueur2");
-        //Joueur J1 = new Joueur("jiji");
-        //Joueur J2 = new Joueur("jojo");
+        FenetreLogin l = new FenetreLogin("Noms des joueurs"); // Création objet FenetreLogin
 
-        //FenetreJeu f = new FenetreJeu(J1, J2);
-
-        l.setVisible(true);
-        //f.setVisible(true);
+        l.setVisible(true); // On rend visible l'objet FenetreLogin
     }
 }

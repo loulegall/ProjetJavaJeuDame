@@ -2,11 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.border.Border;
-import java.awt.BorderLayout;
-
-import static java.awt.Color.blue;
-import static java.awt.Color.red;
 
 public class FenetreJeu extends JFrame {
 
@@ -117,7 +112,7 @@ public class FenetreJeu extends JFrame {
         panel.setLayout(new GridLayout(1, 2));
 
         this.damier = new Damier();
-        damier.setBounds(10, 10, 400, 400);
+        damier.setBounds(damier.getNbLigne(), damier.getNbColonne(), 400, 400);
 
         damier.setPreferredSize(new Dimension(500, 500));
 

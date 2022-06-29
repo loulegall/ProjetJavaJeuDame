@@ -67,6 +67,14 @@ public class FenetreLogin extends JFrame {
         this.pack();
     }
 
+    public JTextField getTextPseudo1() {
+        return textPseudo1;
+    }
+
+    public JTextField getTextPseudo2() {
+        return textPseudo2;
+    }
+
     public class MonEcouteur implements ActionListener {
         FenetreLogin unefenetre;
         public MonEcouteur(FenetreLogin f){

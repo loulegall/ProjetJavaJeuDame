@@ -2,8 +2,8 @@ import javax.swing.*;
 
 public class Pion extends JButton {
 
-    int ligne;
-    int colonne;
+    private int ligne;
+    private int colonne;
     String couleur;
     protected String[][] positions = {
             {null,"1",null,"1",null,"1",null,"1",null,"1"},
@@ -18,8 +18,15 @@ public class Pion extends JButton {
             {"0",null,"0",null,"0",null,"0",null,"0",null},
     };
 
+    private boolean mouv;
+
+
     public Pion() {
 
     }
 
+    public Pion(int ligne, int colonne) {
+        this.ligne = ligne;
+        this.colonne = colonne;
+    }
 }

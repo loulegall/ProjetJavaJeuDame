@@ -6,85 +6,44 @@ import java.util.ArrayList;
 
 
 public class Damier extends JPanel implements MouseListener{
+    private ArrayList<Pion> ListePion = new ArrayList<>();
+    private int nbLigne = 10;
+    private int nbColonne = 10;
+    private boolean isWhite = true;
+    private boolean checkBouton = false;
 
-<<<<<<< HEAD
-    ImageIcon img;
-    private JButton boutonCase;
-=======
-    ArrayList<Pion> ListePion = new ArrayList<>();
-    int nbLigne = 10;
-    int nbColonne = 10;
-    boolean isWhite = true;
-
-    boolean checkBouton = false;
->>>>>>> f3aa06cb067075c5e10fd545cb92b015677ad3af
-
-    Damier(){
+    public Damier(){
         this.construireDamier();
     }
 
-<<<<<<< HEAD
-    protected void paintComponent(Graphics g){
+    private void construireDamier() {
+        JPanel panel = new JPanel(); // Création d'un panel pour le damier
+        panel.setLayout(new GridLayout(nbLigne, nbColonne)); //new GridLayout de nbLigne et nbColonne
 
-        Graphics2D g2 = (Graphics2D) g;
-
-        //g.setColor(Color.black);
-        g.fillRect(50, 50, 50, 50);
-=======
-    private void construireDamier(){
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(nbLigne, nbColonne));
->>>>>>> f3aa06cb067075c5e10fd545cb92b015677ad3af
 
         for (int i=0; i<nbLigne; i++){
             for (int j=0; j<nbColonne; j++){
                 Pion Bcase = new Pion();
+
+                //if((j%2==0 && i%2==0) || (j%2!=0 && i%2!=0)){
                 if (isWhite){
-<<<<<<< HEAD
-
-                    //________Bouton case________//
-                    this.boutonCase = new JButton();
-                    this.boutonCase.setLocation((j+1)*DIM, (i+1)*DIM);
-                    this.boutonCase.setSize(DIM, DIM);
-                    //this.boutonCase.addActionListener(new FenetreLogin.MonEcouteur(this));
-                    this.boutonCase.setBackground(Color.white);
-                    this.add(this.boutonCase);
-                    //g2.setPaint(Color.white);
-
-                }else{
-                    //________Bouton case________//
-                    this.boutonCase = new JButton();
-                    this.boutonCase.setLocation((j+1)*DIM, (i+1)*DIM);
-                    this.boutonCase.setSize(DIM, DIM);
-                    //this.boutonCase.addActionListener(new FenetreLogin.MonEcouteur(this));
-                    this.boutonCase.setBackground(Color.lightGray);
-                    this.add(this.boutonCase);
-                    //g2.setPaint(Color.lightGray);
-=======
                     Bcase.setBackground(Color.white);
                 }else{
                     Bcase.setBackground(Color.gray);
->>>>>>> f3aa06cb067075c5e10fd545cb92b015677ad3af
                 }
                 isWhite = !isWhite;
 
                 for(int x=0; x!=Bcase.positions.length; x++){
                     if(Bcase.positions[i][j] == "1"){
                         Bcase.couleur = "N";
-                        Bcase.ligne = i;
-                        Bcase.colonne = j;
                         ListePion.add(Bcase);
 
                     }else if (Bcase.positions[i][j] == "0"){
                         Bcase.couleur = "B";
-                        Bcase.ligne = i;
-                        Bcase.colonne = j;
                         ListePion.add(Bcase);
 
                     }else if (Bcase.positions[i][j] == ""){
                         Bcase.couleur = "";
-                        Bcase.ligne = i;
-                        Bcase.colonne = j;
                         ListePion.add(Bcase);
                     }
                 }
@@ -93,15 +52,24 @@ public class Damier extends JPanel implements MouseListener{
             }
             isWhite = !isWhite;
         }
+
         for (int i=0; i!=ListePion.size(); i++) {
             ListePion.get(i).addMouseListener(this);
         }
         this.add(panel);
     }
 
+    public int getNbLigne() {
+        return nbLigne;
+    }
+
+    public int getNbColonne() {
+        return nbColonne;
+    }
+
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
-        if(checkBouton == true){
+        if(checkBouton){
             checkBouton = false;
             for (int i=0; i!=ListePion.size(); i++) {
                 if(ListePion.get(i).couleur!="B" || ListePion.get(i).couleur!="N"){

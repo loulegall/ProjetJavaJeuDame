@@ -10,5 +10,4 @@ public class Model {
         //Pion pionB = new Pion();
 
     }
-
 }
